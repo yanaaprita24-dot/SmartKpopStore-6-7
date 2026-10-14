@@ -1,6 +1,6 @@
 package com.mycompany.kpopstore;
 
-public class ItemKpop {
+public abstract class ItemKpop {
     private String nama;
     private String grup;
     private int tahunRilis;
@@ -64,4 +64,6 @@ public class ItemKpop {
     public void caraBeli() {
         System.out.println("   -> Info Beli: Item dibeli langsung di toko K-Pop.");
     }
+
+    public abstract void hitungOngkosKirim();
 }

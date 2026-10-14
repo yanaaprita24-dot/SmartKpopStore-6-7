@@ -1,6 +1,6 @@
 package com.mycompany.kpopstore;
 
-public class Lightstick extends ItemKpop {
+public class Lightstick extends ItemKpop implements DapatDipreorder {
     private String versi;
 
     public Lightstick(String nama, String grup, int tahunRilis, int harga, String versi) {
@@ -27,5 +27,15 @@ public class Lightstick extends ItemKpop {
     @Override
     public void caraBeli() {
         System.out.println("   -> Info Beli: Lightstick wajib pre-order & aktivasi Bluetooth di aplikasi resmi.");
+    }
+
+    @Override
+    public void hitungOngkosKirim() {
+        System.out.println("   -> [ONGKIR LIGHTSTICK] Ongkos kirim Rp25.000 (barang rapuh, packing ekstra).");
+    }
+
+    @Override
+    public void prosesPreorder() {
+        System.out.println("   -> [PREORDER LIGHTSTICK] Lightstick dipesan, dikirim saat stok batch berikutnya tiba.");
     }
 }

@@ -3,7 +3,7 @@ package com.mycompany.kpopstore;
 public class AlbumKpop extends ItemKpop implements DapatDipreorder, DapatDinilai {
     private int jumlahLagu;
 
-    public AlbumKpop(String nama, String grup, int tahunRilis, int harga, int jumlahLagu) {
+    public AlbumKpop(String nama, String grup, int tahunRilis, int harga, int jumlahLagu) throws DataTidakValidException {
         super(nama, grup, tahunRilis, harga);
         setJumlahLagu(jumlahLagu);
         catatObjekBaru();
@@ -11,9 +11,9 @@ public class AlbumKpop extends ItemKpop implements DapatDipreorder, DapatDinilai
 
     public int getJumlahLagu() { return this.jumlahLagu; }
 
-    public final void setJumlahLagu(int jumlahLagu) {
+    public final void setJumlahLagu(int jumlahLagu) throws DataTidakValidException {
         if (jumlahLagu <= 0) {
-            throw new IllegalArgumentException("Jumlah lagu harus lebih dari 0!");
+            throw new DataTidakValidException("Jumlah lagu harus lebih dari 0!");
         }
         this.jumlahLagu = jumlahLagu;
     }

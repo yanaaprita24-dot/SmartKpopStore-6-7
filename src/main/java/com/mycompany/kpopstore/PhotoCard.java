@@ -3,7 +3,7 @@ package com.mycompany.kpopstore;
 public class PhotoCard extends ItemKpop implements DapatDinilai {
     private String namaMember;
 
-    public PhotoCard(String nama, String grup, int tahunRilis, int harga, String namaMember) {
+    public PhotoCard(String nama, String grup, int tahunRilis, int harga, String namaMember) throws DataTidakValidException {
         super(nama, grup, tahunRilis, harga);
         setNamaMember(namaMember);
         catatObjekBaru();
@@ -11,9 +11,9 @@ public class PhotoCard extends ItemKpop implements DapatDinilai {
 
     public String getNamaMember() { return this.namaMember; }
 
-    public final void setNamaMember(String namaMember) {
+    public final void setNamaMember(String namaMember) throws DataTidakValidException {
         if (namaMember == null || namaMember.trim().isEmpty()) {
-            throw new IllegalArgumentException("Nama member tidak boleh kosong!");
+            throw new DataTidakValidException("Nama member tidak boleh kosong!");
         }
         this.namaMember = namaMember.trim();
     }

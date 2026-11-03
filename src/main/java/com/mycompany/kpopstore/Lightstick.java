@@ -3,7 +3,7 @@ package com.mycompany.kpopstore;
 public class Lightstick extends ItemKpop implements DapatDipreorder {
     private String versi;
 
-    public Lightstick(String nama, String grup, int tahunRilis, int harga, String versi) {
+    public Lightstick(String nama, String grup, int tahunRilis, int harga, String versi) throws DataTidakValidException {
         super(nama, grup, tahunRilis, harga);
         setVersi(versi);
         catatObjekBaru();
@@ -11,9 +11,9 @@ public class Lightstick extends ItemKpop implements DapatDipreorder {
 
     public String getVersi() { return this.versi; }
 
-    public final void setVersi(String versi) {
+    public final void setVersi(String versi) throws DataTidakValidException {
         if (versi == null || versi.trim().isEmpty()) {
-            throw new IllegalArgumentException("Versi lightstick tidak boleh kosong!");
+            throw new DataTidakValidException("Versi lightstick tidak boleh kosong!");
         }
         this.versi = versi.trim();
     }

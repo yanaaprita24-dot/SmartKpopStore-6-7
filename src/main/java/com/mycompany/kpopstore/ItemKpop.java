@@ -8,7 +8,7 @@ public abstract class ItemKpop {
 
     private static int totalItemBerhasilDibuat = 0;
 
-    public ItemKpop(String nama, String grup, int tahunRilis, int harga) {
+    public ItemKpop(String nama, String grup, int tahunRilis, int harga) throws DataTidakValidException {
         setNama(nama);
         setGrup(grup);
         setTahunRilis(tahunRilis);
@@ -28,30 +28,30 @@ public abstract class ItemKpop {
     public int getTahunRilis() { return this.tahunRilis; }
     public int getHarga() { return this.harga; }
 
-    public final void setNama(String nama) {
+    public final void setNama(String nama) throws DataTidakValidException {
         if (nama == null || nama.trim().isEmpty()) {
-            throw new IllegalArgumentException("Nama item tidak boleh kosong!");
+            throw new DataTidakValidException("Nama item tidak boleh kosong!");
         }
         this.nama = nama.trim();
     }
 
-    public final void setGrup(String grup) {
+    public final void setGrup(String grup) throws DataTidakValidException {
         if (grup == null || grup.trim().isEmpty()) {
-            throw new IllegalArgumentException("Nama grup/artis tidak boleh kosong!");
+            throw new DataTidakValidException("Nama grup/artis tidak boleh kosong!");
         }
         this.grup = grup.trim();
     }
 
-    public final void setTahunRilis(int tahunRilis) {
+    public final void setTahunRilis(int tahunRilis) throws DataTidakValidException {
         if (tahunRilis < 1990 || tahunRilis > 2030) {
-            throw new IllegalArgumentException("Tahun rilis tidak valid (1990-2030)!");
+            throw new DataTidakValidException("Tahun rilis tidak valid (1990-2030)!");
         }
         this.tahunRilis = tahunRilis;
     }
 
-    public final void setHarga(int harga) {
+    public final void setHarga(int harga) throws DataTidakValidException {
         if (harga <= 0) {
-            throw new IllegalArgumentException("Harga harus lebih dari 0!");
+            throw new DataTidakValidException("Harga harus lebih dari 0!");
         }
         this.harga = harga;
     }
